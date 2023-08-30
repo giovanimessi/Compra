@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -39,17 +42,29 @@ public class Pedido implements Serializable{
 	/**
 	 * 
 	 */
-
-	@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long Id;
+    
+    @NotBlank
 	private String nome;
+    
+    @NotNull
+    @Min(1)
 	private  Long produto;
+    
+    @NotNull
+    @Min(1)
 	private BigDecimal valor;
 	
 	@JsonFormat(pattern = "yyyy-mm-dd")
 	private Date dataCompra;
+	
+    @NotBlank
 	private String cpf_cliente;
+    
+    @NotBlank
 	private String cep;
 	
 	

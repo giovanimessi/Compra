@@ -1,5 +1,7 @@
 package com.mscompra.controler;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +20,7 @@ public class PedidoController {
 	PedidoServices service;
 	
 	@PostMapping(value ="/")
-	public ResponseEntity<Pedido> Salvar(@RequestBody Pedido pedido){
+	public ResponseEntity<Pedido> Salvar(@RequestBody @Valid Pedido pedido){
 		
 		return ResponseEntity.ok(service.salvar(pedido));
 		
